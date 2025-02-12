@@ -1,0 +1,80 @@
+#!/usr/bin/bash
+
+DIR=$(dirname "$0")
+
+# -skip qtfeedback \
+# -skip qtpim \
+# -sysroot /opt/rh/devtoolset-11/root \
+#-recheck \
+#-ltcg \
+
+#CXXFLAGS="-isysroot /opt/rh/devtoolset-11/root" \
+
+OPENSSL_LIBS="/usr/local/openssl3/lib64/libssl.a /usr/local/openssl3/lib64/libcrypto.a" \
+OPENSSL_INCDIR=/usr/local/openssl3/include \
+OPENSSL_LIBDIR=/usr/local/openssl3/lib64 \
+INCLUDE="/usr/local/openssl3/include" \
+LFLAGS="-fuse-ld=lld" \
+"$DIR/configure" \
+-recheck-all \
+-no-pch \
+-I/usr/local/openssl3/include \
+-I/opt/rh/devtoolset-11/root \
+-opensource \
+-confirm-license \
+-prefix /usr/lib/qt-akvis2 \
+-qtlibinfix Akvis2 \
+-platform linux-clang \
+-c++std c++1z \
+-release \
+-force-debug-info \
+-separate-debug-info \
+-shared \
+-openssl \
+-openssl-linked \
+-feature-opensslv11 \
+-cups \
+-pkg-config \
+-egl \
+-no-eglfs \
+-no-use-gold-linker \
+-opengl desktop \
+-fontconfig \
+-no-icu \
+-gif \
+-xcb-xlib \
+-xcb \
+-system-zlib \
+-qt-libjpeg \
+-qt-libpng \
+-qt-pcre \
+-system-freetype \
+-qt-harfbuzz \
+-qt-doubleconversion \
+-nomake examples \
+-nomake tests \
+-no-sse3 \
+-skip qt3d \
+-skip qtactiveqt \
+-skip qtandroidextras \
+-skip qtcanvas3d \
+-skip qtcharts \
+-skip qtconnectivity \
+-skip qtdatavis3d \
+-skip qtdeclarative \
+-skip qtdoc \
+-skip qtgamepad \
+-skip qtlocation \
+-skip qtmacextras \
+-skip qtmultimedia \
+-skip qtpurchasing \
+-skip qtqa \
+-skip qtremoteobjects \
+-skip qtsensors \
+-skip qtspeech \
+-skip qtvirtualkeyboard \
+-skip qtwebchannel \
+-skip qtwebengine \
+-skip qtwebview \
+-skip qtwinextras \
+"$@"
