@@ -7,6 +7,7 @@ DIR=$(dirname "$0")
 # -sysroot /opt/rh/devtoolset-11/root \
 #-recheck \
 #-ltcg \
+#-recheck-all \
 
 #CXXFLAGS="-isysroot /opt/rh/devtoolset-11/root" \
 
@@ -16,7 +17,6 @@ OPENSSL_LIBDIR=/usr/local/openssl3/lib64 \
 INCLUDE="/usr/local/openssl3/include" \
 LFLAGS="-fuse-ld=lld" \
 "$DIR/configure" \
--recheck-all \
 -no-pch \
 -I/usr/local/openssl3/include \
 -I/opt/rh/devtoolset-11/root \
